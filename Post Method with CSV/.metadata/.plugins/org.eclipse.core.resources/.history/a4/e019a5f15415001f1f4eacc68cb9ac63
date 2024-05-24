@@ -1,0 +1,5 @@
+package com.abhradip.csvdemo.repository;
+
+public interface UserRepository {
+
+}

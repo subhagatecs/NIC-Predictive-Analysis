@@ -1,0 +1,13 @@
+server.port=8080
+spring.datasource.url=jdbc:mysql://localhost:3306/nic
+spring.datasource.username=root
+spring.datasource.password=agartala
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=update
+
+#spring.datasource.url=jdbc:postgresql://localhost:5432/nic
+#spring.datasource.username=postgres
+#spring.datasource.password=Agartala
+#spring.jpa.show-sql=true
+#spring.jpa.hibernate.ddl-auto=update
+
