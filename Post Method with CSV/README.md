@@ -3,10 +3,10 @@ This is a Spring Boot microservice, i.e. a POST method to save either CSV or Exc
 
 # Microservice
 Here the microservice is included in the folder CSVDemo. Under the main folder inside it, the file CsvDemoApplication.java runs the Spring Boot Application. There are 4 packages used along with it :- 
-### Controller
-### Entity
-### Repository
-### Response
+### Controller:-
+### Entity:-
+### Repository:-
+### Response:-
 
 The folder resources contains the file application.properties in which the database url, username and password is configured as per local database.
 
