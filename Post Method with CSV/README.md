@@ -16,6 +16,7 @@ It stores data models or entities that represent structure and behaviour of the 
 This contains repository classes that deals with data access. It uses JPA(Java Persistant API) to interact with database.
 
 ### Response:-
+It contains the response format of the user's API request.
 
 ### Service:-
 It contains service classes to implement logic and it is used by controller to perform operations on data.
