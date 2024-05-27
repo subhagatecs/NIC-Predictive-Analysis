@@ -1,8 +1,9 @@
+# Write a Python Program to find the Maximum and Minimum K elements in Tuple.
 def max_min_k_elements_in_tuple(input_tuple, k):
     if k > len(input_tuple) or k <= 0:
         print("Invalid value of k")
         return
-
+        
     # Sort the tuple
     sorted_tuple = sorted(input_tuple)
 
@@ -14,7 +15,9 @@ def max_min_k_elements_in_tuple(input_tuple, k):
 
     return max_k_elements, min_k_elements
 
+
 # Take input from console
+
 input_tuple = tuple(map(int, input("Enter the elements of the tuple separated by spaces: ").split()))
 k = int(input("Enter the value of k: "))
 
