@@ -1,0 +1,144 @@
+package com.example.demo.model;
+import java.util.UUID;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;
+
+@Entity
+@Table(name = "nic")
+public class Nic {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    
+    @Column(name="key")
+    private String key;
+    
+    @Column(name="category")
+    private String category;
+
+	@Column(name="sub_category")
+    private String sub_category;
+    
+	@Column(name="expected_period_in_month")
+    private int expected_period_in_month;
+
+	@Column(name="out_data_pattern")
+    private int out_data_pattern;
+
+    @Column(name="demand_date")
+    private String demand_date;
+    
+    @Column(name="demand_qty")
+    private int demand_qty;
+
+	@Column(name="analysis_year")
+    private long analysis_year;
+    // getters and setters
+
+    public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public Long getKey() {
+		return id;
+	}
+
+	public void setKey(String key) {
+		this.key = key;
+	}
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public String getSub_category() {
+		return sub_category;
+	}
+
+	public void setSub_category(String sub_category) {
+		this.sub_category = sub_category;
+	}
+
+	public int getExpected_period_in_month() {
+		return expected_period_in_month;
+	}
+
+	public void setExpected_period_in_month(int expected_period_in_month) {
+		this.expected_period_in_month = expected_period_in_month;
+	}
+
+	public int getOut_data_pattern() {
+		return out_data_pattern;
+	}
+
+	public void setOut_data_pattern(int out_data_pattern) {
+		this.out_data_pattern = out_data_pattern;
+	}
+
+	public String getDemand_date() {
+		return demand_date;
+	}
+
+	public void setDemand_date(String demand_date) {
+		this.demand_date = demand_date;
+	}
+
+	public int getDemand_qty() {
+		return demand_qty;
+	}
+
+	public void setDemand_qty(int demand_qty) {
+		this.demand_qty = demand_qty;
+	}
+
+	public long getAnalysis_year() {
+		return analysis_year;
+	}
+
+	public void setAnalysis_year(long analysis_year) {
+		this.analysis_year = analysis_year;
+	}
+
+
+	//constructor using fields
+
+	public Nic(Long id, String category, String sub_category, int expected_period_in_month, int out_data_pattern,
+			String demand_date, int demand_qty, long analysis_year) {
+		this.id = id;
+		this.key=UUID.randomUUID().toString() + "27201";
+		this.category = category;
+		this.sub_category = sub_category;
+		this.expected_period_in_month = expected_period_in_month;
+		this.out_data_pattern = out_data_pattern;
+		this.demand_date = demand_date;
+		this.demand_qty = demand_qty;
+		this.analysis_year = analysis_year;
+	}
+	
+    
+	public Nic() {
+      // Generate the unique key value
+//      this.key = UUID.randomUUID().toString()+"27201"+ Integer.toString((int) (Math.random() * 900) + 100);
+		this.key = Long.toString(this.getId())+"27201"+ Integer.toString((int) (Math.random() * 900) + 100);
+      
+  }
+
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", key = " + key + ", category=" + category + ", sub_category=" + sub_category
+				+ ", expected_period_in_month=" + expected_period_in_month + ", out_data_pattern=" + out_data_pattern
+				+ ", demand_date=" + demand_date + ", demand_qty=" + demand_qty + ", analysis_year=" + analysis_year
+				+ "]";
+	}
+}

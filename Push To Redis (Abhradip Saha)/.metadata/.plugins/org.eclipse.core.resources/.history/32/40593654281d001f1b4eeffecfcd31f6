@@ -1,0 +1,111 @@
+package com.example.demo.model;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+import java.util.UUID;
+
+@Entity
+@Table(name = "nic")
+public class Nic {
+    @Id
+    private String id;
+    private String category;
+    private String subCategory;
+    private int expectedPeriodInMonth;
+    private int outDataPattern;
+    private String demandDate;
+    private int demandQty;
+    private long analysisYear;
+
+    public Nic() {
+        // Generate the unique key value
+        this.id = UUID.randomUUID().toString() + "22710" + ((int) (Math.random() * 900) + 100);
+    }
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public String getSubCategory() {
+		return subCategory;
+	}
+
+	public void setSubCategory(String subCategory) {
+		this.subCategory = subCategory;
+	}
+
+	public int getExpectedPeriodInMonth() {
+		return expectedPeriodInMonth;
+	}
+
+	public void setExpectedPeriodInMonth(int expectedPeriodInMonth) {
+		this.expectedPeriodInMonth = expectedPeriodInMonth;
+	}
+
+	public int getOutDataPattern() {
+		return outDataPattern;
+	}
+
+	public void setOutDataPattern(int outDataPattern) {
+		this.outDataPattern = outDataPattern;
+	}
+
+	public String getDemandDate() {
+		return demandDate;
+	}
+
+	public void setDemandDate(String demandDate) {
+		this.demandDate = demandDate;
+	}
+
+	public int getDemandQty() {
+		return demandQty;
+	}
+
+	public void setDemandQty(int demandQty) {
+		this.demandQty = demandQty;
+	}
+
+	public long getAnalysisYear() {
+		return analysisYear;
+	}
+
+	public void setAnalysisYear(long analysisYear) {
+		this.analysisYear = analysisYear;
+	}
+
+	public Nic(String id, String category, String subCategory, int expectedPeriodInMonth, int outDataPattern,
+			String demandDate, int demandQty, long analysisYear) {
+		super();
+		this.id = id;
+		this.category = category;
+		this.subCategory = subCategory;
+		this.expectedPeriodInMonth = expectedPeriodInMonth;
+		this.outDataPattern = outDataPattern;
+		this.demandDate = demandDate;
+		this.demandQty = demandQty;
+		this.analysisYear = analysisYear;
+	}
+
+	@Override
+	public String toString() {
+		return "Nic [id=" + id + ", category=" + category + ", subCategory=" + subCategory + ", expectedPeriodInMonth="
+				+ expectedPeriodInMonth + ", outDataPattern=" + outDataPattern + ", demandDate=" + demandDate
+				+ ", demandQty=" + demandQty + ", analysisYear=" + analysisYear + "]";
+	}
+    
+    
+}

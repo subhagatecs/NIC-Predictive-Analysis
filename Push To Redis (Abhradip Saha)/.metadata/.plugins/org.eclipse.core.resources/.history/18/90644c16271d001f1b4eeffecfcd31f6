@@ -1,0 +1,6 @@
+server.port=8081
+spring.datasource.url=jdbc:postgresql://localhost:5432/NIC_Predictive_Analysis
+spring.datasource.username=postgres
+spring.datasource.password=Agartala
+# spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=update

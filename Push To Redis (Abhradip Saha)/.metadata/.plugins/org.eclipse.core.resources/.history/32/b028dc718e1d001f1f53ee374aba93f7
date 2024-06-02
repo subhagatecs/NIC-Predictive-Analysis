@@ -1,0 +1,19 @@
+package com.example.demo.service;
+import com.example.demo.model.Nic;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Service;
+import com.example.demo.repository.NicRepo;
+
+@Service
+//@CacheConfig(cacheNames = {"Records"})
+public class NicService {
+    @Autowired
+    private NicRepo nicRepo;
+
+//    @Cacheable(key="#key")
+    public Nic saveNic(Nic nic) {
+        return nicRepo.save(nic);
+    }
+}

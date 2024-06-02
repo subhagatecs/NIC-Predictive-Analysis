@@ -1,0 +1,23 @@
+package com.example.demo.controller;
+import com.example.demo.model.Nic;
+import com.example.demo.response.ApiResponse;
+import com.example.demo.service.NicService;
+import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.cache.annotation.Cacheable;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api")
+public class NicController {
+
+    @Autowired
+    private NicService nicService;
+
+    @PostMapping("/nic")
+//    @Cacheable(key="#key")
+    public ApiResponse createNic(@RequestBody Nic nic) {
+        nicService.saveNic(nic);
+        return new ApiResponse(true, "Data pushed to database successfully");
+    }
+}
+

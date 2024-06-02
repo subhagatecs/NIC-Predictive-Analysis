@@ -1,0 +1,126 @@
+package com.example.demo.model;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+import java.util.UUID;
+
+import org.springframework.data.relational.core.mapping.Column;
+
+@Entity
+@Table(name = "nic")
+public class Nic {
+	@GeneratedValue(strategy = GenerationType.AUTO)
+    private String id;
+    
+    @Column(name="category")
+    private String category;
+
+	@Column(name="sub_category")
+    private String sub_category;
+    
+	@Column(name="expected_period_in_month")
+    private int expected_period_in_month;
+
+	@Column(name="out_data_pattern")
+    private int out_data_pattern;
+
+    @Column(name="demand_date")
+    private String demand_date;
+    
+    @Column(name="demand_qty")
+    private int demand_qty;
+
+    public Nic() {
+        // Generate the unique key value
+        this.id = UUID.randomUUID().toString() + "27201" + ((int) (Math.random() * 900) + 100);
+        System.out.println(this.id);
+    }
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public String getsub_category() {
+		return sub_category;
+	}
+
+	public void setsub_category(String sub_category) {
+		this.sub_category = sub_category;
+	}
+
+	public int getexpected_period_in_month() {
+		return expected_period_in_month;
+	}
+
+	public void setexpected_period_in_month(int expected_period_in_month) {
+		this.expected_period_in_month = expected_period_in_month;
+	}
+
+	public int getout_data_pattern() {
+		return out_data_pattern;
+	}
+
+	public void setout_data_pattern(int out_data_pattern) {
+		this.out_data_pattern = out_data_pattern;
+	}
+
+	public String getdemand_date() {
+		return demand_date;
+	}
+
+	public void setdemand_date(String demand_date) {
+		this.demand_date = demand_date;
+	}
+
+	public int getdemand_qty() {
+		return demand_qty;
+	}
+
+	public void setdemand_qty(int demand_qty) {
+		this.demand_qty = demand_qty;
+	}
+
+	public long getanalysis_year() {
+		return analysis_year;
+	}
+
+	public void setanalysis_year(long analysis_year) {
+		this.analysis_year = analysis_year;
+	}
+
+	public Nic(String id, String category, String sub_category, int expected_period_in_month, int out_data_pattern,
+			String demand_date, int demand_qty, long analysis_year) {
+		super();
+		this.id = id;
+		this.category = category;
+		this.sub_category = sub_category;
+		this.expected_period_in_month = expected_period_in_month;
+		this.out_data_pattern = out_data_pattern;
+		this.demand_date = demand_date;
+		this.demand_qty = demand_qty;
+		this.analysis_year = analysis_year;
+	}
+
+	@Override
+	public String toString() {
+		return "Nic [id=" + id + ", category=" + category + ", sub_category=" + sub_category + ", expected_period_in_month="
+				+ expected_period_in_month + ", out_data_pattern=" + out_data_pattern + ", demand_date=" + demand_date
+				+ ", demand_qty=" + demand_qty + ", analysis_year=" + analysis_year + "]";
+	}
+    
+    
+}
