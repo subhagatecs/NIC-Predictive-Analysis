@@ -1,0 +1,25 @@
+package com.example.demo.model;
+
+import java.util.UUID;
+
+public class Record {
+    private String key;
+    private Object data; // Replace 'Object' with your actual data type
+
+    // Standard getters and setters
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public Object getData() {
+        return data;
+    }
+
+    public void setData(Object data) {
+        this.data = data;
+    }
+}

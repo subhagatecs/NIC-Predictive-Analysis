@@ -1,0 +1,13 @@
+#server.port=8080
+#spring.datasource.url=jdbc:postgresql://localhost:5432/NIC_Predictive_Analysis
+#spring.datasource.username=postgres
+#spring.datasource.password=Agartala
+## spring.jpa.show-sql=true
+#spring.jpa.hibernate.ddl-auto=update
+
+# Redis Configuration 
+spring.data.redis.database=0
+spring.data.redis.host=localhost
+spring.data.redis.port=6380
+#spring.data.redis.password=
+spring.data.redis.timeout=60000
