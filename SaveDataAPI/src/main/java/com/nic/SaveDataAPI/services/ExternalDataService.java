@@ -2,7 +2,6 @@ package com.nic.SaveDataAPI.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -18,8 +17,7 @@ public class ExternalDataService {
     public String fetchData(String requestKey){
 //        String url = externalApiUrl + "?requestKey="+requestKey;
         String url = externalApiUrl +requestKey;
-        System.out.println(url);
-        return  restTemplate.getForObject(url,String.class);
+        return  restTemplate.getForObject(url,String.class); // needs similar types to be served from python endpoint
     }
 
 }
