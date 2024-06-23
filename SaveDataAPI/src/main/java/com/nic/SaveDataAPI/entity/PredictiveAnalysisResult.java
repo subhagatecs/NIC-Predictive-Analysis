@@ -1,10 +1,12 @@
 package com.nic.SaveDataAPI.entity;
 
+import io.hypersistence.utils.hibernate.type.json.JsonType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
 import java.sql.Timestamp;
 import java.util.Map;
@@ -23,8 +25,9 @@ public class PredictiveAnalysisResult {
     private Long slNo;
     @Column(name = "request_key", nullable = false)
     private String requestKey;
-    @Column(name = "result_set")
-    private String resultSet;
+    @Column(name = "result_set", columnDefinition = "jsonb")
+    @Type(JsonType.class)
+    private Map<String,Object>resultSet;
     @Column(name = "no_of_time_accessed",nullable = false)
     private int noOfTimeAccessed=0;
     @Column(name = "last_accessed_on")
