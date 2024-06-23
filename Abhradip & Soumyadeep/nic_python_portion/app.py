@@ -22,7 +22,7 @@ def load_data(filename):
 
 def preprocess_data(df):
     try:
-        df['Demand_date'] = pd.to_datetime(df['Demand_date'], format='%d-%m-%Y')
+        df['Demand_date'] = pd.to_datetime(df['Demand_date'], format='%Y-%m-%d')
     except Exception as e:
         print(f"Error parsing dates: {e}")
         return None
