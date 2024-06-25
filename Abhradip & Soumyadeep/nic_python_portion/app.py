@@ -4,8 +4,13 @@ from statsmodels.tsa.arima.model import ARIMA
 import matplotlib.pyplot as plt
 import seaborn as sns
 import requests
+from model import db, predictiveAnalysisResult
+import datetime
 
 app = Flask(__name__)
+# Database configuration
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://posgres:password@localhost/nic_predictive_analysis'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 csv_file = './updated_Nic_test data.csv'  # Update with your CSV file path
 api_url = "http://localhost:8080/auth/fetch-nic"  # Replace with your API endpoint
 response = requests.get(api_url)
@@ -76,7 +81,7 @@ def get_forecast():
         forecast_data = {
             'forecasted_sales': forecast.tolist()
         }
-        
+
         return jsonify(forecast_data)
     except Exception as e:
         return jsonify({'error': f"An error occurred: {e}"}), 500
