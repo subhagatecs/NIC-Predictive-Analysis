@@ -4,18 +4,29 @@ from statsmodels.tsa.arima.model import ARIMA
 import matplotlib.pyplot as plt
 import seaborn as sns
 import requests
-from model import db, predictiveAnalysisResult
-import datetime
+import psycopg2
+from psycopg2 import sql
 
 app = Flask(__name__)
-# Database configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://posgres:password@localhost/nic_predictive_analysis'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 csv_file = './updated_Nic_test data.csv'  # Update with your CSV file path
 api_url = "http://localhost:8080/auth/fetch-nic"  # Replace with your API endpoint
 response = requests.get(api_url)
 json_data = response.json()
+df1=pd.DataFrame(json_data)
+# existing_df = pd.read_csv(csv_file)
+# updated_df = pd.concat([existing_df, df1], ignore_index=True)
+# updated_df.to_csv(csv_file, index=False)
+df1.to_csv(csv_file, mode='a', index=False, header=False)
 
+
+# PostgreSQL connection parameters
+db_params = {
+    'dbname': 'NIC_Predictive_Analysis',
+    'user': 'postgres',
+    'password': 'Agartala',
+    'host': 'localhost',
+    'port': '5432'
+}
 
 def load_data(filename):
     try:
@@ -24,6 +35,7 @@ def load_data(filename):
     except Exception as e:
         print(f"Error loading CSV file: {e}")
         return None
+
 
 def preprocess_data(df):
     try:
@@ -35,6 +47,7 @@ def preprocess_data(df):
     df.sort_index(inplace=True)
     return df
 
+
 def build_arima_model(series, order=(5, 1, 0)):
     model = ARIMA(series, order=order)
     model_fit = model.fit()
@@ -43,6 +56,23 @@ def build_arima_model(series, order=(5, 1, 0)):
 def forecast_sales(model, steps):
     forecast = model.forecast(steps=steps)
     return forecast
+
+def save_forecast_to_db(forecast, start_date):
+    try:
+        conn = psycopg2.connect(**db_params)
+        cur = conn.cursor()
+        insert_query = sql.SQL("""
+            INSERT INTO forecast_results (forecast_date, forecasted_qty)
+            VALUES (%s, %s)
+        """)
+        for i, qty in enumerate(forecast):
+            forecast_date = start_date + pd.DateOffset(months=i)
+            cur.execute(insert_query, (forecast_date, qty))
+        conn.commit()
+        cur.close()
+        conn.close()
+    except Exception as e:
+        print(f"Error saving to database: {e}")
 
 @app.route('/api/forecast', methods=['GET'])
 def get_forecast():
@@ -81,7 +111,7 @@ def get_forecast():
         forecast_data = {
             'forecasted_sales': forecast.tolist()
         }
-
+        
         return jsonify(forecast_data)
     except Exception as e:
         return jsonify({'error': f"An error occurred: {e}"}), 500
